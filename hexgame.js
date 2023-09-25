@@ -79,7 +79,7 @@ const start = () => {
   });
 
   // we need to resolve both the dictionary retrieval and pangram retrieval before initializing the game
-  Promise.all(pangramPromise, dictionaryPromise).then((results) => {
+  Promise.all([pangramPromise, dictionaryPromise]).then((results) => {
     const [pangramResult] = results;
     setUpWithWord(
       pangramResult.initialPangram,
