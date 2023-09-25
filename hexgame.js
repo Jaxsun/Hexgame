@@ -48,35 +48,42 @@ const start = () => {
 
   // set up game
   const urlParams = new URLSearchParams(window.location.search);
-  let initialPangram;
-  let initialMiddleLetter;
+
+  let pangramPromise;
   if (urlParams.has("pangram")) {
-    initialPangram = urlParams.get("pangram");
+    const initialPangram = urlParams.get("pangram");
+    let initialMiddleLetter;
     if (urlParams.has("mid")) {
       initialMiddleLetter = urlParams.get("mid");
     }
+    pangramPromise = Promise.resolve({ initialPangram, initialMiddleLetter });
   } else {
-    fetch("sevenletterwords.txt").then((response) => {
-      return response.text().then((file) => {
-        const lines = file.split(/\n/g);
-        const count = (lines || []).length;
-
-        const no = Math.floor(Math.random() * count);
-        initialPangram = lines[no].trim();
-      });
+    pangramPromise = fetch("sevenletterwords.txt").then((response) =>
+      response.text()
+    ).then(file => {
+            const lines = file.split(/\n/g);
+            const count = (lines || []).length;
+    
+            const no = Math.floor(Math.random() * count);
+            return {initialPangram: lines[no].trim()};
+          });
     });
   }
 
-  fetch("dictionary.txt").then((response) => {
+  const dictionaryPromise = fetch("dictionary.txt").then((response) => {
     return response.text().then((file) => {
       dictionary = file.split(/\r?\n/g);
       if (urlParams.has("pangram")) {
         dictionary.push(urlParams.get("pangram"));
       }
-      // set up the rest of the game once the dictionary is initiatlized to ensure we can validate stored words
-      setUpWithWord(initialPangram, initialMiddleLetter);
     });
   });
+
+  // we need to resolve both the dictionary retrieval and pangram retrieval before initializing the game
+  Promise.all(pangramPromise, dictionaryPromise).then(results => {
+    const [pangramResult] = results
+    setUpWithWord(pangramResult.initialPangram, pangramResult.initialMiddleLetter);
+  })
 };
 
 /**
