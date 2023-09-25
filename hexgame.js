@@ -58,16 +58,15 @@ const start = () => {
     }
     pangramPromise = Promise.resolve({ initialPangram, initialMiddleLetter });
   } else {
-    pangramPromise = fetch("sevenletterwords.txt").then((response) =>
-      response.text()
-    ).then(file => {
-            const lines = file.split(/\n/g);
-            const count = (lines || []).length;
-    
-            const no = Math.floor(Math.random() * count);
-            return {initialPangram: lines[no].trim()};
-          });
-    });
+    pangramPromise = fetch("sevenletterwords.txt")
+      .then((response) => response.text())
+      .then((file) => {
+        const lines = file.split(/\n/g);
+        const count = (lines || []).length;
+
+        const no = Math.floor(Math.random() * count);
+        return { initialPangram: lines[no].trim() };
+      });
   }
 
   const dictionaryPromise = fetch("dictionary.txt").then((response) => {
@@ -80,10 +79,13 @@ const start = () => {
   });
 
   // we need to resolve both the dictionary retrieval and pangram retrieval before initializing the game
-  Promise.all(pangramPromise, dictionaryPromise).then(results => {
-    const [pangramResult] = results
-    setUpWithWord(pangramResult.initialPangram, pangramResult.initialMiddleLetter);
-  })
+  Promise.all(pangramPromise, dictionaryPromise).then((results) => {
+    const [pangramResult] = results;
+    setUpWithWord(
+      pangramResult.initialPangram,
+      pangramResult.initialMiddleLetter
+    );
+  });
 };
 
 /**
