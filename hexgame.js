@@ -73,7 +73,7 @@ const start = () => {
 
   fetch("dictionary.txt").then((response) => {
     return response.text().then((file) => {
-      dictionary = file.split(/\r\n/g);
+      dictionary = file.split(/\r?\n/g);
       if (urlParams.has("pangram")) {
         dictionary.push(urlParams.get("pangram"));
       }
