@@ -130,7 +130,7 @@ const setUpWithWord = (pangram, mid) => {
   }
 
   localStorage.setItem("last-pangram", pangram);
-  localStorage.setitem("last-mid", middleLetter);
+  localStorage.setItem("last-mid", middleLetter);
 };
 
 /**
