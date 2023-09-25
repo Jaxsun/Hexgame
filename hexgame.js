@@ -48,14 +48,12 @@ const start = () => {
 
   // set up game
   const urlParams = new URLSearchParams(window.location.search);
+  let initialPangram;
+  let initialMiddleLetter;
   if (urlParams.has("pangram")) {
+    initialPangram = urlParams.get("pangram");
     if (urlParams.has("mid")) {
-      setUpWithWord(
-        urlParams.get("pangram").toUpperCase(),
-        urlParams.get("mid").toUpperCase()
-      );
-    } else {
-      setUpWithWord(urlParams.get("pangram").toUpperCase());
+      initialMiddleLetter = urlParams.get("mid");
     }
   } else {
     fetch("sevenletterwords.txt").then((response) => {
@@ -64,9 +62,7 @@ const start = () => {
         const count = (lines || []).length;
 
         const no = Math.floor(Math.random() * count);
-        const pangram = lines[no].trim();
-
-        setUpWithWord(pangram);
+        initialPangram = lines[no].trim();
       });
     });
   }
@@ -77,6 +73,8 @@ const start = () => {
       if (urlParams.has("pangram")) {
         dictionary.push(urlParams.get("pangram"));
       }
+      // set up the rest of the game once the dictionary is initiatlized to ensure we can validate stored words
+      setUpWithWord(initialPangram, initialMiddleLetter);
     });
   });
 };
