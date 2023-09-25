@@ -156,12 +156,19 @@ const addLetter = (event) => {
  * @param {*} event type event
  */
 const typeLetter = (event) => {
-  if (!event.metaKey) {
-    event.preventDefault();
-    if (event.code === "Backspace" || event.code === "Delete") deleteLetter();
-    else if (event.code === "Enter" || event.code === "NumpadEnter") enter();
-    else if (event.code === "Space") shuffle();
-    else if (event.key.length === 1) {
+  if (!event.metaKey && !event.altKey && !event.ctrlKey) {
+    if (event.code === "Backspace" || event.code === "Delete") {
+      event.preventDefault();
+      deleteLetter();
+    } else if (event.code === "Enter" || event.code === "NumpadEnter") {
+      event.preventDefault();
+      enter();
+    } else if (event.code === "Space") {
+      event.preventDefault();
+      shuffle();
+    } else if (event.key.length === 1 && event.key >= 65 && event.key <= 90) {
+      // key was a letter
+      event.preventDefault();
       entryContent.innerText += event.key.toUpperCase();
       validateLetters();
     }
