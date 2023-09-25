@@ -166,7 +166,11 @@ const typeLetter = (event) => {
     } else if (event.code === "Space") {
       event.preventDefault();
       shuffle();
-    } else if (event.key.length === 1 && event.key >= 65 && event.key <= 90) {
+    } else if (
+      event.key.length === 1 &&
+      event.keyCode >= 65 &&
+      event.keyCode <= 90
+    ) {
       // key was a letter
       event.preventDefault();
       entryContent.innerText += event.key.toUpperCase();
