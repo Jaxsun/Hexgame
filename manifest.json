@@ -1,0 +1,12 @@
+{
+  "name": "Hexgame",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "hexgame.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
