@@ -373,7 +373,7 @@ const share = () => {
 const shareMessage = () => {
   const half1 = `${pangramLetters[0]}${pangramLetters[1]}${pangramLetters[2]}`;
   const half2 = `${pangramLetters[3]}${pangramLetters[4]}${pangramLetters[5]}`;
-  return `#Hexgame ${today.getFullYear()}-${today.getMonth()}-${today.getDate()}
+  return `#Hexgame ${today.toLocaleDateString()}
 ${half1}🟨${middleLetter}🟨${half2}
 Points: ${points.innerText}
 Words: ${wordCount.innerText}
