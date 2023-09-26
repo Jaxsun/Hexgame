@@ -1,69 +1,65 @@
-<html>
-
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <link rel="stylesheet" type="text/css" href="hex-style.css" />
     <title>Hexgame</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src=//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js"></script>
     <script src="hexgame.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div id="game">
-            <div id="left">
-                <div id="messageBox">
-                </div>
-                <div id="entry">
-                    <span id="entryContent"></span>
-                </div>
-                <div id="gridContainer">
-                    <ul id="grid" class="clear">
-                        <li>
-                            <div class="hexagon fake-hexagon"></div>
-                        </li>
-                        <li>
-                            <div class="hexagon outer-hexagon"></div>
-                        </li>
-                        <li>
-                            <div class="hexagon outer-hexagon"></div>
-                        </li>
-                        <li>
-                            <div class="hexagon outer-hexagon"></div>
-                        </li>
-                        <li>
-                            <div class="hexagon central-hexagon"></div>
-                        </li>
-                        <li>
-                            <div class="hexagon outer-hexagon"></div>
-                        </li>
-                        <li>
-                            <div class="hexagon fake-hexagon"></div>
-                        </li>
-                        <li>
-                            <div class="hexagon outer-hexagon"></div>
-                        </li>
-                        <li>
-                            <div class="hexagon outer-hexagon"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div id="controls">
-                    <div class="button" id="deleteButton">Delete</div>
-                    <div class="button" id="shuffleButton">Shuffle</div>
-                    <div class="button" id="enterButton">Enter</div>
-                </div>
-            </div>
-            <div id="right">
-                <div>Points: <span id="points">0</span></div>
-                <div>Number of words found: <span id="wordCount">0</span></div>
-                <br />
-                <div id="foundWords"></div>
-            </div>
+      <div id="game">
+        <div id="left">
+          <div id="messageBox"></div>
+          <div id="entry">
+            <span id="entryContent"></span>
+          </div>
+          <div id="gridContainer">
+            <ul id="grid" class="clear">
+              <li>
+                <div class="hexagon fake-hexagon"></div>
+              </li>
+              <li>
+                <div class="hexagon outer-hexagon"></div>
+              </li>
+              <li>
+                <div class="hexagon outer-hexagon"></div>
+              </li>
+              <li>
+                <div class="hexagon outer-hexagon"></div>
+              </li>
+              <li>
+                <div class="hexagon central-hexagon"></div>
+              </li>
+              <li>
+                <div class="hexagon outer-hexagon"></div>
+              </li>
+              <li>
+                <div class="hexagon fake-hexagon"></div>
+              </li>
+              <li>
+                <div class="hexagon outer-hexagon"></div>
+              </li>
+              <li>
+                <div class="hexagon outer-hexagon"></div>
+              </li>
+            </ul>
+          </div>
+          <div id="controls">
+            <div class="button" id="deleteButton">Delete</div>
+            <div class="button" id="shuffleButton">Shuffle</div>
+            <div class="button" id="enterButton">Enter</div>
+          </div>
         </div>
+        <div id="right">
+          <div>Points: <span id="points">0</span></div>
+          <div>Number of words found: <span id="wordCount">0</span></div>
+          <br />
+          <div id="foundWords"></div>
+        </div>
+      </div>
     </div>
-    </div>
-
-</body>
-
+  </body>
 </html>
