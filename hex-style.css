@@ -186,7 +186,7 @@ body {
     clear: both;
 }
 
-#controls {
+.controls {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -195,7 +195,7 @@ body {
     flex-wrap: nowrap;
 }
 
-#controls .button {
+.controls .button {
     border-radius: 1.5em;
     border: 1px solid #fffbee;
     padding: 0.5em;

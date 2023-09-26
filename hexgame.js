@@ -14,6 +14,8 @@ let wordCount = null;
 let dictionary = [];
 let foundWordsList = [];
 
+const today = new Date();
+
 /**
  * sets up game
  */
@@ -33,6 +35,7 @@ const start = () => {
     .addEventListener("click", deleteLetter);
   document.querySelector("#shuffleButton").addEventListener("click", shuffle);
   document.querySelector("#enterButton").addEventListener("click", enter);
+  document.querySelector("#shareButton").addEventListener("click", share);
   document.addEventListener("keydown", typeLetter);
 
   allHexagons.forEach((ele) => {
@@ -41,9 +44,8 @@ const start = () => {
 
   // seed the Math random function based on the current date
   // https://github.com/davidbau/seedrandom
-  const today = new Date();
   Math.seedrandom(
-    "" + today.getFullYear() + today.getMonth() + today.getDate()
+    `${today.getFullYear()}${today.getMonth()}${today.getDate()}`
   );
 
   // set up game
@@ -362,6 +364,20 @@ const shuffleArray = (array) => {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
+};
+
+const share = () => {
+  navigator.clipboard.writeText(shareMessage());
+};
+
+const shareMessage = () => {
+  const half1 = `${pangramLetters[0]}${pangramLetters[1]}${pangramLetters[2]}`;
+  const half2 = `${pangramLetters[3]}${pangramLetters[4]}${pangramLetters[5]}`;
+  return `#Hexgame ${today.getFullYear()}-${today.getMonth()}-${today.getDate()}
+${half1}🟨${middleLetter}🟨${half2}
+Points: ${points.innerText}
+Words: ${wordCount.innerText}
+${window.location.origin}`;
 };
 
 window.onload = start;
