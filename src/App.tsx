@@ -1,24 +1,5 @@
-import React from "react";
-import "./App.css";
-import Game from "./Game";
+import "./app.css";
 
-export type WordEntry = { word: string; isPangram: boolean };
-export type GameConfiguration = {
-  letters: [string, string, string, string, string, string, string];
-  middleLetter: string;
-};
-
-export default function App() {
-  const [configuration, setConfiguration] = React.useState<GameConfiguration>();
-  const [words, setWords] = React.useState<WordEntry[]>([]);
-
-  return (
-    <Game
-      configuration={{
-        letters: ["A", "B", "C", "D", "E", "F", "G"],
-        middleLetter: "D",
-      }}
-      words={words}
-    ></Game>
-  );
+export function App() {
+  return <div>Hello</div>;
 }
