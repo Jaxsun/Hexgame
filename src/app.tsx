@@ -20,7 +20,7 @@ export function App() {
         const dictionary = text.split(/\n/g);
         setDictionary(dictionary);
       });
-  });
+  }, []);
 
   useEffect(() => {
     fetch("sevenletterwords.txt")
@@ -33,7 +33,7 @@ export function App() {
         const middleLetter = pangram.charAt(Math.floor(random() * 7));
         setMiddleLetter(middleLetter);
       });
-  });
+  }, []);
 
   useEffect(() => {
     const storedWords = localStorage.getItem("found-words") || "[]";
@@ -44,7 +44,7 @@ export function App() {
     ) {
       setFoundWords(foundWords);
     }
-  });
+  }, []);
 
   if (dictionary && pangram && middleLetter) {
     return (
