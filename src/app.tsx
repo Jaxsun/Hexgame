@@ -2,12 +2,12 @@ import { useEffect, useState } from "preact/hooks";
 import seedrandom from "seedrandom";
 import "./app.css";
 
-export function App() {
-  const today = new Date();
-  const random = seedrandom(
-    `${today.getFullYear()}${today.getMonth()}${today.getDate()}`
-  );
+const today = new Date();
+const random = seedrandom(
+  `${today.getFullYear()}${today.getMonth()}${today.getDate()}`
+);
 
+export function App() {
   const [dictionary, setDictionary] = useState<string[]>();
   const [pangram, setPangram] = useState<string>();
   const [middleLetter, setMiddleLetter] = useState<string>();
